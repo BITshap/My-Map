@@ -1,0 +1,30 @@
+body {
+   
+    background-color: aqua;
+}
+
+h1{
+    font-size: 48px;
+    font-family: 'Tangerine';
+}
+
+.container{
+    margin: auto;
+    border: 1px solid red;
+    width: 90vw;
+    height: 60vh;
+    background-color: green;
+}
+
+#menu {
+    margin: auto;
+    width: 90vw;
+    padding: none;
+}
+
+.d-flex {
+    margin: 1em;
+}
+button:hover{
+    box-shadow: 2px 2px;
+}
