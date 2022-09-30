@@ -37,7 +37,7 @@ const UserMap = {
             this.businesses[i].lat,
             this.businesses[i].long,
         ])
-        .bindPopup('{this.businesses[i].name}')
+        .bindPopup('This is '+ this.businesses[i].name)
         .addTo(this.map)
     }
 },
@@ -67,7 +67,8 @@ async function gatherBusiness(business) {
   let limit = 5
   let lat = UserMap.coordinates[0]
   let lon = UserMap.coordinates[1]
-  let response = await fetch('https://api.foursquare.com/v3/places/search?&query=${business}&limit=${limit}&ll=${lat}%2C${lon}', options)
+  var url = 'https://api.foursquare.com/v3/places/search?&query=' + business + '&limit=' + limit + '&ll=' + lat + '%2C' + lon; 
+  let response = await fetch(url, options)
   let data = await response.text()
   let parsedData = JSON.parse(data)
   let businesses =  parsedData.results
@@ -99,7 +100,7 @@ window.onload = async () => {
 
 // business submit button
 document.getElementById('business').addEventListener('click', async (event) => {
-    event.preventDefault(
+    event.preventDefault()
     let business = document.getElementById('business').value
     let data = await gatherBusiness(business)
     UserMap.businesses = gatheringResults(data)
